@@ -28,6 +28,10 @@ app.use(express.static(path.resolve(
   isDevelopment ? './src/static' : './dist/'
 )));
 
+app.get('/*', function(req, res) {
+	res.sendFile(path.join(__dirname, './src/static', 'index.html'));
+});
+
 app.listen(3000, (error) => {
   if (error)
     throw error;
