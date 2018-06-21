@@ -1,8 +1,10 @@
 import React from 'react';
 import Main from '../src/Main';
-import { render } from 'enzyme';
+import { render, shallow } from 'enzyme';
 
-it('should render a App', () => {
-	const wrapper = render(<Main />);
-	expect(wrapper).toMatchSnapshot();
+describe('<Main />', () => {
+	it('should render a Main', () => {
+		const wrapper = shallow(<Main />);
+		expect(wrapper).toMatchSnapshot();
+	});
 });
