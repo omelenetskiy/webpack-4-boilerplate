@@ -5,5 +5,9 @@ exports[`should render a App 1`] = `
   <h2>
     Main
   </h2>
+  <img
+    alt=""
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAFhAJ/wlseKgAAAABJRU5ErkJggg=="
+  />
 </div>
 `;
