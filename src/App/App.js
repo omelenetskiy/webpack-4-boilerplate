@@ -3,6 +3,6 @@ import { hot } from 'react-hot-loader';
 
 import Main from '../Main';
 
-const App = () => <Main title="Main Page" />;
+const App = () => <Main title="Main Page 1" />;
 
 export default hot(module)(App);
