@@ -1,51 +1,89 @@
 {
-	"name": "webpack-4-boilerplate",
-	"version": "1.0.0",
-	"description": "webpack-4-boilerplate",
-	"main": "index.js",
-	"scripts": {
-		"build": "NODE_ENV=production webpack-cli",
-		"start": "node ./server.js",
-		"test": "jest"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/omelenetskiy/webpack-4-boilerplate.git"
-	},
-	"author": "Alex Omelenetskiy",
-	"license": "MIT",
-	"dependencies": {
-		"babel-core": "6.26.3",
-		"babel-loader": "7.1.4",
-		"babel-plugin-transform-export-extensions": "^6.22.0",
-		"babel-preset-env": "1.7.0",
-		"babel-preset-react": "6.24.1",
-		"babel-preset-stage-2": "^6.24.1",
-		"clean-webpack-plugin": "0.1.19",
-		"copy-webpack-plugin": "4.5.1",
-		"css-loader": "0.28.11",
-		"enzyme-adapter-react-16": "^1.1.1",
-		"enzyme-to-json": "^3.3.4",
-		"express": "4.16.3",
-		"jest": "^23.1.0",
-		"mini-css-extract-plugin": "0.4.0",
-		"node-sass": "4.9.0",
-		"raf": "^3.4.0",
-		"react": "16.4.0",
-		"react-dom": "16.4.0",
-		"react-hot-loader": "4.2.0",
-		"sass-loader": "7.0.1",
-		"style-loader": "0.21.0",
-		"webpack": "4.9.1",
-		"webpack-cli": "2.1.4"
-	},
-	"devDependencies": {
-		"babel-plugin-transform-class-properties": "^6.24.1",
-		"enzyme": "^3.3.0",
-		"file-loader": "^1.1.11",
-		"identity-obj-proxy": "^3.0.0",
-		"jest-static-stubs": "0.0.1",
-		"webpack-dev-middleware": "3.1.3",
-		"webpack-hot-middleware": "2.22.2"
-	}
+  "name": "webpack-4-boilerplate",
+  "version": "1.0.0",
+  "description": "webpack-4-boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack-cli",
+    "start": "cross-env NODE_ENV=development node server.js --mode development",
+    "test": "jest --config ./jest.config.js",
+    "prettier": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "lint": "npx eslint --max-warnings=0 --ext .jsx,.js src/",
+    "lint:scss": "stylelint \"src/**/*.scss\" --syntax scss",
+    "lint:fix": "npm run lint --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omelenetskiy/webpack-4-boilerplate.git"
+  },
+  "author": "Alex Omelenetskiy",
+  "license": "MIT",
+  "dependencies": {
+    "cross-env": "^7.0.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.0.2",
+    "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "express": "^4.17.1",
+    "extract-css-chunks-webpack-plugin": "^4.7.5",
+    "husky": "^4.2.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.0.1",
+    "jest-static-stubs": "0.0.1",
+    "lint-staged": "^10.2.9",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.0.5",
+    "prop-types": "^15.7.2",
+    "react-hot-loader": "^4.12.21",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
+    "stylelint": "^13.6.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-prettier": "^1.1.2",
+    "stylelint-scss": "^3.17.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx}": [
+      "npm run prettier",
+      "npm run lint:fix",
+      "git add"
+    ],
+    "src/*.scss": [
+      "npm run lint:scss",
+      "git add"
+    ]
+  }
 }
