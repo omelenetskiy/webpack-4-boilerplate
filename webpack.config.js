@@ -10,8 +10,8 @@ module.exports = {
   entry: {
     bundle: [
       '@babel/polyfill',
-      isDevelopment &&
-        'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      isDevelopment
+        && 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './src/index',
     ].filter(Boolean),
   },
@@ -75,8 +75,8 @@ module.exports = {
     new ExtractCssChunks(),
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isDevelopment && new CleanWebpackPlugin(['dist'], { root: path.resolve('./') }),
-    !isDevelopment &&
-      new CopyWebpackPlugin([
+    !isDevelopment
+      && new CopyWebpackPlugin([
         {
           context: 'src/static',
           from: '**/*',
